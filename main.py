@@ -70,7 +70,7 @@ with open(myFile, 'a') as write_file:
         cnt += 1
     write_file.write(']')
 
-# ftp naar itstudy.eu, de login gaat automatisch naar de juiste dir itstudy.eu/zaalwacht
+# ftp naar de remote omgeving
 import ftplib
 
 import localvar
