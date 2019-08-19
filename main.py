@@ -3,11 +3,15 @@
 import json
 import os
 import urllib.request
-
+# ftp naar de remote omgeving
+import ftplib
+import localvar
 from bs4 import BeautifulSoup
+import datetime
+
 
 # specify the url
-toscrape_page = 'https://www.verkadefabriek.nl/programma/'
+toscrape_page = localvar.s
 
 # query the website and return the html to the variable ‘page’
 page = urllib.request.urlopen(toscrape_page)
@@ -42,7 +46,6 @@ for item in soup.find_all('span'):
 
 # array van array omzetten naar array van dict's
 showsArrOfDicts = []
-import datetime
 
 for show in AlleShows:
     if show[1] == 'vandaag':
@@ -70,10 +73,6 @@ with open(myFile, 'a') as write_file:
         cnt += 1
     write_file.write(']')
 
-# ftp naar de remote omgeving
-import ftplib
-
-import localvar
 
 # maximale grootte vergroten/begrenzen
 ftplib.FTP.maxline = 65536
