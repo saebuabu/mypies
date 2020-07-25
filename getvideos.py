@@ -104,32 +104,32 @@ allvideos = [
     #     'toname': 'FindBeatBuildHeatLesson1',
     # }
     # ,
-    {
-        'fromurl': 'https://embed-fastly.wistia.com/deliveries/8b934c914d0f5e12d07e9f7f4c9244c9ed822424.m3u8/seg-{counter}-v1-a1.ts',
-        'maxcounter': 897,
-        'toname': 'BindAndRewind',
-    }
-    , {
-        'fromurl': 'https://embed-fastly.wistia.com/deliveries/29d41b3664f6714ff1845f711d262e22d455e6ce.m3u8/seg-{counter}-v1-a1.ts',
-        'maxcounter': 900,
-        'toname': 'HipToTheFlow',
-    }
-    , {
-        'fromurl': 'https://embed-fastly.wistia.com/deliveries/adf842e4d94fb6a21bdcd5c1b1e980a6c5e974ea.m3u8/seg-{counter}-v1-a1.ts',
-        'maxcounter': 915,
-        'toname': 'SuryaIntoTheSunset',
-    }
-    , {
-        'fromurl': 'https://embed-fastly.wistia.com/deliveries/0678351f12fb5bfc35e35fb17badf2cfac0bc5d4.m3u8/seg-{counter}-v1-a1.ts',
-        'maxcounter': 898,
-        'toname': 'RockAndGlow',
-    }
-    , {
-        'fromurl': 'https://embed-fastly.wistia.com/deliveries/fb152b07ae4ddebb8e3260366483f4f8416b35b6.m3u8/seg-{counter}-v1-a1.ts',
-        'maxcounter': 897,
-        'toname': 'StarLightFlight',
-    }
-    # tot hier dag 1 en dag 2 volledig
+    # {
+    #     'fromurl': 'https://embed-fastly.wistia.com/deliveries/8b934c914d0f5e12d07e9f7f4c9244c9ed822424.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 897,
+    #     'toname': 'BindAndRewind',
+    # }
+    # , {
+    #     'fromurl': 'https://embed-fastly.wistia.com/deliveries/29d41b3664f6714ff1845f711d262e22d455e6ce.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 900,
+    #     'toname': 'HipToTheFlow',
+    # }
+    # , {
+    #     'fromurl': 'https://embed-fastly.wistia.com/deliveries/adf842e4d94fb6a21bdcd5c1b1e980a6c5e974ea.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 915,
+    #     'toname': 'SuryaIntoTheSunset',
+    # }
+    # , {
+    #     'fromurl': 'https://embed-fastly.wistia.com/deliveries/0678351f12fb5bfc35e35fb17badf2cfac0bc5d4.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 898,
+    #     'toname': 'RockAndGlow',
+    # }
+    # , {
+    #     'fromurl': 'https://embed-fastly.wistia.com/deliveries/fb152b07ae4ddebb8e3260366483f4f8416b35b6.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 897,
+    #     'toname': 'StarLightFlight',
+    # }
+    # # tot hier dag 1 en dag 2 volledig
 ]
 
 for video in allvideos:
