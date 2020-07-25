@@ -1,5 +1,3 @@
-# import libraries
-# import csv
 import json
 import os
 import urllib.request
@@ -10,6 +8,8 @@ from bs4 import BeautifulSoup
 import datetime
 
 
+
+
 # specify the url
 toscrape_page = localvar.s
 
@@ -18,32 +18,25 @@ page = urllib.request.urlopen(toscrape_page)
 
 # webpagina wordt in de soup gegooid
 soup = BeautifulSoup(page, 'html.parser')
-
-# unused
-inSection = True
-
-# Eerst in een array zetten
+xtra = ''
 AlleShows = []
-
-# groffe filter
-for item in soup.find_all('span'):
-    #    if (item.get('id') == 'MainContent_ProgramsRepeater_pnlBg_0'):
-    #       inSection = True
-    cl = item.get('class')
-    if type(cl) is list:
-        hasTextWrap = False
-        hasP15 = False
-        for c in cl:
-            if c == 'text-wrap':
-                hasTextWrap = True
-            # het gaat om span's met class='p15' waarbij de spans met class='text-wrap' moeten worden uitgesloten
-            if c == 'p15' and len(item.get_text().strip()) > 0 and inSection:
-                hasP15 = True
-
-        if not hasTextWrap and hasP15:
-            aShow = item.get_text().strip().replace('\n', ';').split(';')
-            AlleShows.append(aShow)
-
+for item in soup.find_all('div'):
+    if type(item.get('class')) is list and 'agendeDetailContainer' in item.get('class'):
+        # eerste de basisgegevens opzoeken
+        for it in item.find_all('span'):
+            if type(it.get('class')) is list and 'p15' in it.get('class'):
+                aShow = it.get_text().strip().replace('\n', ';').split(';')
+        #vervolgens in een ander stuk de link en en/og het uitverkocht is
+        for it2 in item.find_all('a'):
+            if type(it2.get('class')) is list and 'infoLink' in it2.get('class'):
+                href = it2.get('href')
+            if type(it2.get('class')) is list and 'ticketAT' in it2.get('class') and 'soldout' in it2.get('class'):
+                xtra = [it2.get('href').split('=')[1], href,  'soldout']
+            else:
+                if 'ticketAT' in it2.get('class'):
+                    xtra = [it2.get('href').split('=')[1], href,  '']
+        newShow = aShow + xtra
+        AlleShows.append(newShow)
 # array van array omzetten naar array van dict's
 showsArrOfDicts = []
 
@@ -55,7 +48,7 @@ for show in AlleShows:
         tm = datetime.date.today() + datetime.timedelta(days=1)
         show[1] = tm.strftime("%d %B")
 
-    thisdict = {'tijd': show[0], 'dag': show[1], 'naam': show[2], 'type': show[3]}
+    thisdict = {'tijd': show[0], 'dag': show[1], 'naam': show[2], 'type': show[3], 'id' : show[4], 'url': show[5], 'soldout': show[6]}
     showsArrOfDicts.append(thisdict)
 
 myFile = 'show_json.json'
