@@ -6,11 +6,15 @@ import urllib.request
 
 
 allvideos = [
-    # {'fromurl': 'https://embed-fastly.wistia.com/deliveries/33939f368ab462cee931827c4ba41381d88d71cf.m3u8/seg-{counter}-v1-a1.ts',
-    #  'maxcounter': 1232,
-    #  'toname': 'FlowRemediesShoulder'},
+     {'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/741058b7d4b8f64bbda88feecdd81b64c1d5e44f.m3u8/seg-{counter}-v1-a1.ts',
+      'maxcounter': 369,
+      'toname': 'DailyPractice4'},
+    {
+        'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/b8ca7b3f9eac911678b940fc26dc8e2675d7678c.m3u8/seg-{counter}-v1-a1.ts',
+        'maxcounter': 135,
+        'toname': 'DailyMeditation4'},
     # {
-    #     'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/5fddd3ba3d00b2bd908f51901c78f879963daa14.m3u8/seg-{counter}-v1-a1.ts',
+    #    'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/5fddd3ba3d00b2bd908f51901c78f879963daa14.m3u8/seg-{counter}-v1-a1.ts',
     #     'maxcounter': 1465,
     #     'toname': 'BendingTwistingBalancingPress',
     #     },
@@ -130,6 +134,39 @@ allvideos = [
     #     'toname': 'StarLightFlight',
     # }
     # # tot hier dag 1 en dag 2 volledig
+    # {
+    #     'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/619b3dc7be9e1cc920d8f7784b3d82fa233b6bbc.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 411,
+    #     'toname': 'Day3L1IgnotingYourPractice',
+    # },
+    # {
+    #     'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/0993d1d1bc34c3b829d5cfcfecbc906612562968.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 456,
+    #     'toname': 'Day3L2PoweredNPeaceful',
+    # },
+    # {
+    #     'fromurl': 'https://embed-fastly.wistia.com/deliveries/fbc7ad4e51c3ec91666d030aee2fdf7f9ff644e4.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 964,
+    #     'toname': 'Day3L3WorkingWheel',
+    # },
+    # {
+    #     'fromurl': 'https://embed-fastly.wistia.com/deliveries/c35bf82d92b690e7e99b365bcc4b949af322dcf6.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 408,
+    #     'toname': 'Day4L1WarmingIntoTheSideBody',
+    # },
+    # {
+    #     'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/fb0de8d50f0d31c0e09fafe23382d08e77351b81.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 463,
+    #     'toname': 'Day4L2SmoothSteadyHips',
+    # },
+    # {
+    #     'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/dff41eb70539042835198f13ca32aa98e6595f79.m3u8/seg-{counter}-v1-a1.ts',
+    #     'maxcounter': 1409,
+    #     'toname': 'Day4L3HolyHandstands',
+    # },
+    # tot hier dag 3 en dag 4
+
+
 ]
 
 for video in allvideos:
@@ -138,7 +175,8 @@ for video in allvideos:
     filetowrite = "D:\\Downloads\\videos\\" + video['toname'] + ".ts"
     counter = 1
     print(filetowrite + " started")
-    while counter <= max:
+    while True:
+        # counter <= max:
         # print(counter)
         url = url2open.replace("{counter}", str(counter))
         req = urllib.request.Request(url)
@@ -147,7 +185,7 @@ for video in allvideos:
         except:
             print("error with " + str(counter))
             counter += 1
-            continue
+            break
 
         the_page = response.read()
         # urllib.request.urlretrieve("https://embed-fastly.wistia.com/deliveries/6ddeeebf7fc041ea963a6ddd56ab15f1c20db7dc.m3u8/seg-"+ str(counter) + "-v1-a1.ts", "D:\\Downloads\\videos\\file" + str(counter) + ".ts")
