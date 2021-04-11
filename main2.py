@@ -20,7 +20,7 @@ page_toscrape = localvar.t
 with Session() as s:
     site = s.get(login_page)
     bs_content = BeautifulSoup(site.content, "html.parser")
-    login_data = {"EmailAddress": "abu.saebu@home.nl", "Password": "Vjack2002"}
+    login_data = {"EmailAddress": localvar.e, "Password": localvar.epw}
     s.post(login_page, login_data)
 
     home_page = s.get(page_toscrape)

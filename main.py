@@ -8,8 +8,6 @@ from bs4 import BeautifulSoup
 import datetime
 
 
-
-
 # specify the url
 toscrape_page = localvar.s
 

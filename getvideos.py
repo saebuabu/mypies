@@ -6,13 +6,13 @@ import urllib.request
 
 
 allvideos = [
-     {'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/741058b7d4b8f64bbda88feecdd81b64c1d5e44f.m3u8/seg-{counter}-v1-a1.ts',
+     {'fromurl': 'https://embed-fastly.wistia.com/deliveries/899d93eaae94e19417f55a61a3a6a68b74b49189.m3u8/seg-{counter}-v1-a1.ts',
       'maxcounter': 369,
-      'toname': 'DailyPractice4'},
+      'toname': 'DailyPractice10'},
     {
-        'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/b8ca7b3f9eac911678b940fc26dc8e2675d7678c.m3u8/seg-{counter}-v1-a1.ts',
+        'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/e79416811b431ad4cb08a0b20f1d561378de68ce.m3u8/seg-{counter}-v1-a1.ts',
         'maxcounter': 135,
-        'toname': 'DailyMeditation4'},
+        'toname': 'DailyMeditation10'},
     # {
     #    'fromurl': 'https://embedwistia-a.akamaihd.net/deliveries/5fddd3ba3d00b2bd908f51901c78f879963daa14.m3u8/seg-{counter}-v1-a1.ts',
     #     'maxcounter': 1465,
