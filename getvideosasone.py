@@ -1,5 +1,5 @@
-import sys
 from urllib3 import connection_from_url
+
 
 i = 28
 while i < 383:

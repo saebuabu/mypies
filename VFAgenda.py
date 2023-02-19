@@ -24,7 +24,7 @@ def scrapePage(souped, showsArrOfDicts):
             type = it.get_text().strip()
 
         thisdict = {'tijd': datum.split(' - ')[1], 'dag': datum.split(' - ')[0], 'naam': nameShow, 'type': type,
-                    'id': 0, 'url': url, 'soldout': ticketstatus}
+                    'id': 0, 'url': 'https://verkadefabriek.nl' + url, 'soldout': ticketstatus}
         showsArrOfDicts.append(thisdict)
 
     return showsArrOfDicts
