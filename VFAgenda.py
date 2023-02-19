@@ -13,7 +13,12 @@ import datetime
 def scrapePage(souped, showsArrOfDicts):
     for item in souped.select('div.article-wrapper'):
         datum = nameShow = type = url = ticketstatus = None
-        url = item.find_parent('a').get('href')
+        try:
+            url = item.find_parent('a').get('href')
+        except AttributeError:
+            print(item)
+            url = ""
+
         for it in item.select('span.date'):
             datum = it.get_text().strip()
         for it in item.select('h3.article-title'):
@@ -23,10 +28,26 @@ def scrapePage(souped, showsArrOfDicts):
         for it in item.select('span.article-type'):
             type = it.get_text().strip()
 
-        thisdict = {'tijd': datum.split(' - ')[1], 'dag': datum.split(' - ')[0], 'naam': nameShow, 'type': type,
+        tijd = ''
+        try:
+            tijd = datum.split(' - ')[1]
+        except AttributeError:
+            print(item)
+            tijd = '00:00'
+        except:
+            tijd = ''
+
+        dag = ''
+        try:
+            dag = datum.split(' - ')[0]
+        except AttributeError:
+            print(item)
+            dag = '?? ??'
+
+
+        thisdict = {'tijd': tijd, 'dag': dag, 'naam': nameShow, 'type': type,
                     'id': 0, 'url': 'https://verkadefabriek.nl' + url, 'soldout': ticketstatus}
         showsArrOfDicts.append(thisdict)
-
     return showsArrOfDicts
 
 
@@ -39,6 +60,8 @@ soup = BeautifulSoup(html.text, 'html.parser')
 allPagesShowsArrOfDicts = []
 allPagesShowsArrOfDicts = scrapePage(soup, allPagesShowsArrOfDicts)
 
+print(allPagesShowsArrOfDicts)
+
 # Zoeken van laatste pagina in agenda
 lastpage = 1
 for item in soup.select('a.page-link'):
@@ -46,14 +69,14 @@ for item in soup.select('a.page-link'):
 
 i = 2
 while i <= int(lastpage):
-#while i <= 5:
     toscrape_page = localvar.s + '?page=' + str(i)
+    print(toscrape_page)
     # query the website and return the html to the variable ‘page’
     html = requests.get(toscrape_page, verify=True)
     soup = BeautifulSoup(html.text, 'html.parser')
     allPagesShowsArrOfDicts = scrapePage(soup, allPagesShowsArrOfDicts)
+    print(allPagesShowsArrOfDicts)
     i = i + 1
-
 
 
 myFile = 'show_json.json'
