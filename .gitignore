@@ -1,2 +1,12 @@
 /localvar.py
 /show_json.json
+__pycache__
+*.pyc
+
+*.pyo
+*.pyd
+*.pdb
+*.egg-info
+*.egg
+*.whl
+*.db
